@@ -1,0 +1,114 @@
+{
+  "common": {
+    "continue": "Kontynuuj",
+    "cancel": "Anuluj",
+    "retry": "Spróbuj ponownie",
+    "copy": "Kopiuj",
+    "copied": "Skopiowano",
+    "loading": "Ładowanie…",
+    "back": "Wstecz",
+    "language": "Język"
+  },
+  "welcome": {
+    "title": "Odpowiedzi bez cringe",
+    "subtitle": "Wklej rozmowę — dostaniesz 3 naturalne warianty odpowiedzi. Na randki i na co dzień.",
+    "uploadScreenshot": "Prześlij zrzut ekranu",
+    "pasteText": "Wklej tekst",
+    "freeGenerationsLeft": "Pozostało darmowych generacji: {{count}}",
+    "comingSoon": "Wkrótce"
+  },
+  "paste": {
+    "title": "Wklej rozmowę",
+    "placeholder": "Wklej tutaj tekst rozmowy…\nKażda wiadomość w nowej linii",
+    "minLength": "Minimum 20 znaków",
+    "proceed": "Dalej",
+    "hint": "Skopiuj wiadomości z Tindera, Bumble, Telegrama lub dowolnego komunikatora"
+  },
+  "review": {
+    "title": "Sprawdź rozmowę",
+    "speakerMe": "Ja",
+    "speakerThem": "Oni",
+    "speakerUnknown": "Nieznany",
+    "contextHint": "Więcej kontekstu — lepsze odpowiedzi",
+    "fewMessagesWarning": "Mało wiadomości — odpowiedzi mogą być mniej trafne",
+    "proceed": "Dalej"
+  },
+  "customize": {
+    "title": "Dostosuj odpowiedź",
+    "region": "Region",
+    "goal": "Cel",
+    "tone": "Ton",
+    "generate": "Generuj"
+  },
+  "generating": {
+    "reading": "Czytam kontekst…",
+    "checking": "Sprawdzam ton…",
+    "polishing": "Usuwam cringe…"
+  },
+  "results": {
+    "title": "Twoje odpowiedzi",
+    "whyThisWorks": "Dlaczego to działa",
+    "regenerate": "Generuj ponownie",
+    "variantSafe": "Spokojny",
+    "variantPlayful": "Zabawny",
+    "variantBold": "Śmiały",
+    "newConversation": "Nowa rozmowa"
+  },
+  "paywall": {
+    "title": "Więcej odpowiedzi — mniej niezręczności",
+    "subtitle": "3 darmowe generacje. Potem subskrypcja lub pakiet.",
+    "restore": "Przywróć zakupy",
+    "bestValue": "Najlepsza oferta"
+  },
+  "settings": {
+    "title": "Ustawienia",
+    "deleteData": "Usuń wszystkie dane",
+    "deleteConfirm": "Tej operacji nie można cofnąć.",
+    "privacyPolicy": "Polityka prywatności",
+    "support": "Wsparcie"
+  },
+  "privacy": {
+    "title": "Prywatność",
+    "screenshotsLocal": "Zrzuty ekranu są przetwarzane tylko na Twoim urządzeniu",
+    "noStorage": "Tekst rozmowy nie jest przechowywany na naszych serwerach",
+    "noSelling": "Nie sprzedajemy Twoich danych",
+    "ageGate": "Mam ukończone 18 lat",
+    "ageGateTitle": "Masz 18+?",
+    "ageGateSubtitle": "Aplikacja dla dorosłych — randki i rozmowy"
+  },
+  "errors": {
+    "ocrFailed": "Nie udało się rozpoznać tekstu",
+    "ocrFailedAction": "Wklej ręcznie",
+    "generationFailed": "Nie udało się wygenerować odpowiedzi",
+    "usageExceeded": "Limit wyczerpany",
+    "network": "Sprawdź połączenie z internetem"
+  },
+  "goals": {
+    "keepItGoing": { "label": "Kontynuować rozmowę", "description": "Utrzymać dialog bez niezręcznych pauz" },
+    "flirtLightly": { "label": "Lekki flirt", "description": "Zasugerować zainteresowanie bez przesady" },
+    "askForDate": { "label": "Zaprosić na randkę", "description": "Zaproponować spotkanie konkretnie" },
+    "getContact": { "label": "Uzyskać kontakt", "description": "Przejść do innego komunikatora naturalnie" },
+    "recoverAwkward": { "label": "Naprawić niezręczność", "description": "Wygładzić dziwny moment" },
+    "clarifyIntent": { "label": "Wyjaśnić intencje", "description": "Zrozumieć, co osoba ma na myśli" },
+    "replyPolitely": { "label": "Odpowiedzieć grzecznie", "description": "Kulturalna odpowiedź bez zobowiązań" },
+    "endRespectfully": { "label": "Zakończyć z szacunkiem", "description": "Delikatnie zakończyć rozmowę" }
+  },
+  "tones": {
+    "soft": { "label": "Łagodny", "description": "Przyjaznie i bez presji" },
+    "playful": { "label": "Zabawny", "description": "Z humorem i lekkością" },
+    "confident": { "label": "Pewny", "description": "Spokojna pewność siebie" },
+    "direct": { "label": "Bezpośredni", "description": "Jasno i na temat" },
+    "bold": { "label": "Śmiały", "description": "Odważniej niż zwykle, ale nie grubo" }
+  },
+  "regions": {
+    "auto": "Auto",
+    "diasporaEu": "Diaspora (Europa)",
+    "pl": "Polska",
+    "ua": "Ukraina",
+    "ruMoscow": "Moskwa",
+    "ruPiter": "Petersburg",
+    "ruRegions": "Regiony Rosji",
+    "kz": "Kazachstan",
+    "by": "Białoruś"
+  }
+}

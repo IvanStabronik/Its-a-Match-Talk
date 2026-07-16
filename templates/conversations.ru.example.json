@@ -1,0 +1,59 @@
+{
+  "description": "Примеры переписок для unit/integration тестов генерации (paste flow)",
+  "conversations": [
+    {
+      "id": "tinder-opener",
+      "source": "Tinder",
+      "messages": [
+        { "speaker": "Them", "text": "Привет! У тебя в профиле написано, что любишь горы — это правда?" },
+        { "speaker": "Me", "text": "Да, каждый год стараюсь куда-нибудь съездить" },
+        { "speaker": "Them", "text": "Круто! А куда последний раз?" }
+      ],
+      "suggestedGoal": "keep-it-going",
+      "suggestedTone": "playful"
+    },
+    {
+      "id": "awkward-silence",
+      "source": "Bumble",
+      "messages": [
+        { "speaker": "Me", "text": "Как прошли выходные?" },
+        { "speaker": "Them", "text": "норм" },
+        { "speaker": "Me", "text": "..." }
+      ],
+      "suggestedGoal": "recover-awkward",
+      "suggestedTone": "soft"
+    },
+    {
+      "id": "ask-date",
+      "source": "Pure",
+      "messages": [
+        { "speaker": "Them", "text": "Ты забавный" },
+        { "speaker": "Me", "text": "Стараюсь)" },
+        { "speaker": "Them", "text": "Может встретимся на этой неделе?" },
+        { "speaker": "Me", "text": "Давай, только я в пятницу свободен" }
+      ],
+      "suggestedGoal": "ask-for-date",
+      "suggestedTone": "confident"
+    },
+    {
+      "id": "get-contact",
+      "source": "Mamba",
+      "messages": [
+        { "speaker": "Them", "text": "Тут неудобно переписываться, пропадают сообщения" },
+        { "speaker": "Me", "text": "Да, заметил" }
+      ],
+      "suggestedGoal": "get-contact",
+      "suggestedTone": "direct"
+    },
+    {
+      "id": "end-politely",
+      "source": "Telegram",
+      "messages": [
+        { "speaker": "Them", "text": "Извини, я не готова к отношениям сейчас" },
+        { "speaker": "Me", "text": "" }
+      ],
+      "suggestedGoal": "end-respectfully",
+      "suggestedTone": "soft"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "goals": [
+    {
+      "id": "keep-it-going",
+      "label": "Продолжить разговор",
+      "description": "Поддержать диалог без неловких пауз",
+      "icon": "chatbubble"
+    },
+    {
+      "id": "flirt-lightly",
+      "label": "Лёгкий флирт",
+      "description": "Намекнуть на интерес, не перегибая",
+      "icon": "heart"
+    },
+    {
+      "id": "ask-for-date",
+      "label": "Пригласить на свидание",
+      "description": "Предложить встретиться конкретно и уверенно",
+      "icon": "calendar"
+    },
+    {
+      "id": "get-contact",
+      "label": "Получить номер / соцсети",
+      "description": "Перейти в другой мессенджер естественно",
+      "icon": "phone-portrait"
+    },
+    {
+      "id": "recover-awkward",
+      "label": "Исправить неловкость",
+      "description": "Сгладить странный момент или опечатку",
+      "icon": "bandage"
+    },
+    {
+      "id": "clarify-intent",
+      "label": "Прояснить намерения",
+      "description": "Понять, что человек имеет в виду",
+      "icon": "help-circle"
+    },
+    {
+      "id": "reply-politely",
+      "label": "Ответить вежливо",
+      "description": "Корректный ответ без обязательств",
+      "icon": "hand-left"
+    },
+    {
+      "id": "end-respectfully",
+      "label": "Завершить уважительно",
+      "description": "Мягко закончить переписку",
+      "icon": "exit"
+    }
+  ],
+  "tones": [
+    {
+      "id": "soft",
+      "label": "Мягкий",
+      "description": "Доброжелательно и без давления"
+    },
+    {
+      "id": "playful",
+      "label": "Игривый",
+      "description": "С юмором и лёгкостью"
+    },
+    {
+      "id": "confident",
+      "label": "Уверенный",
+      "description": "Спокойная уверенность без высокомерия"
+    },
+    {
+      "id": "direct",
+      "label": "Прямой",
+      "description": "Чётко и по делу"
+    },
+    {
+      "id": "bold",
+      "label": "Смелый",
+      "description": "Смелее обычного, но не грубо"
+    }
+  ],
+  "replyVariants": [
+    { "id": "Safe", "label": "Спокойный" },
+    { "id": "Playful", "label": "Игривый" },
+    { "id": "Bold", "label": "Смелый" }
+  ],
+  "regions": [
+    { "id": "Auto", "label": "Авто" },
+    { "id": "RU-Moscow", "label": "Москва" },
+    { "id": "RU-Piter", "label": "Санкт-Петербург" },
+    { "id": "RU-Regions", "label": "Регионы России" },
+    { "id": "KZ", "label": "Казахстан" },
+    { "id": "BY", "label": "Беларусь" },
+    { "id": "Diaspora-EU", "label": "Диаспора (Европа)" }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "common": {
+    "continue": "Continue",
+    "cancel": "Cancel",
+    "retry": "Try again",
+    "copy": "Copy",
+    "copied": "Copied",
+    "loading": "Loading…",
+    "back": "Back",
+    "language": "Language"
+  },
+  "welcome": {
+    "title": "Replies without cringe",
+    "subtitle": "Paste your chat — get 3 natural reply options. For dating and everyday conversations.",
+    "uploadScreenshot": "Upload screenshot",
+    "pasteText": "Paste text",
+    "freeGenerationsLeft": "Free generations left: {{count}}",
+    "comingSoon": "Coming soon"
+  },
+  "paste": {
+    "title": "Paste conversation",
+    "placeholder": "Paste your chat here…\nOne message per line",
+    "minLength": "At least 20 characters",
+    "proceed": "Next",
+    "hint": "Copy messages from Tinder, Bumble, Telegram, or any messenger"
+  },
+  "review": {
+    "title": "Review conversation",
+    "speakerMe": "Me",
+    "speakerThem": "Them",
+    "speakerUnknown": "Unknown",
+    "contextHint": "More context — better replies",
+    "fewMessagesWarning": "Few messages — replies may be less accurate",
+    "proceed": "Next"
+  },
+  "customize": {
+    "title": "Customize reply",
+    "region": "Region",
+    "goal": "Goal",
+    "tone": "Tone",
+    "generate": "Generate"
+  },
+  "generating": {
+    "reading": "Reading context…",
+    "checking": "Checking tone…",
+    "polishing": "Removing cringe…"
+  },
+  "results": {
+    "title": "Your replies",
+    "whyThisWorks": "Why this works",
+    "regenerate": "Generate again",
+    "variantSafe": "Calm",
+    "variantPlayful": "Playful",
+    "variantBold": "Bold",
+    "newConversation": "New conversation"
+  },
+  "paywall": {
+    "title": "More replies — less awkwardness",
+    "subtitle": "3 free generations. Then subscription or pack.",
+    "restore": "Restore purchases",
+    "bestValue": "Best value"
+  },
+  "settings": {
+    "title": "Settings",
+    "deleteData": "Delete all data",
+    "deleteConfirm": "This action cannot be undone.",
+    "privacyPolicy": "Privacy policy",
+    "support": "Support"
+  },
+  "privacy": {
+    "title": "Privacy",
+    "screenshotsLocal": "Screenshots are processed only on your device",
+    "noStorage": "Conversation text is not stored on our servers",
+    "noSelling": "We do not sell your data",
+    "ageGate": "I am 18 or older",
+    "ageGateTitle": "Are you 18+?",
+    "ageGateSubtitle": "Adults only — dating and conversations"
+  },
+  "errors": {
+    "ocrFailed": "Could not recognize text",
+    "ocrFailedAction": "Paste manually",
+    "generationFailed": "Could not generate replies",
+    "usageExceeded": "Limit reached",
+    "network": "Check your internet connection"
+  },
+  "goals": {
+    "keepItGoing": { "label": "Keep the conversation going", "description": "Maintain the flow without awkward pauses" },
+    "flirtLightly": { "label": "Light flirt", "description": "Show interest without overdoing it" },
+    "askForDate": { "label": "Ask for a date", "description": "Suggest meeting in a clear way" },
+    "getContact": { "label": "Get contact info", "description": "Move to another messenger naturally" },
+    "recoverAwkward": { "label": "Fix awkward moment", "description": "Smooth over a weird moment" },
+    "clarifyIntent": { "label": "Clarify intentions", "description": "Understand what they mean" },
+    "replyPolitely": { "label": "Reply politely", "description": "A courteous reply without commitment" },
+    "endRespectfully": { "label": "End respectfully", "description": "Wrap up the chat gently" }
+  },
+  "tones": {
+    "soft": { "label": "Soft", "description": "Warm and low-pressure" },
+    "playful": { "label": "Playful", "description": "With humor and lightness" },
+    "confident": { "label": "Confident", "description": "Calm self-assurance" },
+    "direct": { "label": "Direct", "description": "Clear and to the point" },
+    "bold": { "label": "Bold", "description": "Bolder than usual, but not rude" }
+  },
+  "regions": {
+    "auto": "Auto",
+    "diasporaEu": "Diaspora (Europe)",
+    "pl": "Poland",
+    "ua": "Ukraine",
+    "ruMoscow": "Moscow",
+    "ruPiter": "Saint Petersburg",
+    "ruRegions": "Russian regions",
+    "kz": "Kazakhstan",
+    "by": "Belarus"
+  }
+}
