@@ -14,10 +14,12 @@
 | 2026-07-16 | **Bundle ID:** `com.ivanstabronik.itsamatchtalk` | Placeholder until App Store / Play setup |
 | 2026-07-16 | **Repo:** https://github.com/IvanStabronik/Its-a-Match-Talk.git | User provided |
 | 2026-07-16 | **P0 slice:** Paste → Review → Customize → Mock Generate → Results | OCR + payments in Phase 2–3 |
+| 2026-07-16 | **Supabase:** `judqmuighjmawjgoiuqr` (West EU / Ireland) | User project; EU hosting |
+| 2026-07-16 | **Auth v1:** Anonymous only | Device-bound; Google/Apple later |
 
 ## Open (decide before store release)
 
 - Final App Store / Play Store pricing tiers
 - Privacy Policy URL (PL + RU + EN versions)
-- Supabase project credentials (Phase 1)
+- OpenAI API key for Edge Function (still mock until set)
 - RevenueCat setup (Phase 3)

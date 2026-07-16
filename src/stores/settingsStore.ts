@@ -14,6 +14,7 @@ type SettingsState = {
   confirmAge: () => void;
   acceptPrivacy: () => void;
   incrementGenerationsUsed: () => void;
+  setFreeGenerationsUsed: (count: number) => void;
   resetGenerationsUsed: () => void;
 };
 
@@ -35,6 +36,7 @@ export const useSettingsStore = create<SettingsState>()(
       acceptPrivacy: () => set({ privacyAccepted: true }),
       incrementGenerationsUsed: () =>
         set((state) => ({ freeGenerationsUsed: state.freeGenerationsUsed + 1 })),
+      setFreeGenerationsUsed: (count) => set({ freeGenerationsUsed: count }),
       resetGenerationsUsed: () => set({ freeGenerationsUsed: 0 }),
     }),
     {

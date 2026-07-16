@@ -6,7 +6,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Screen } from '@/components/ui';
 import { FREE_GENERATIONS_LIMIT } from '@/config/constants';
 import { useTranslation } from '@/hooks/useTranslation';
-import { buildGenerationRequest, generateRepliesFromRequest } from '@/services/generation';
+import {
+  buildGenerationRequest,
+  generateRepliesFromRequest,
+  UsageExceededError,
+} from '@/services/generation';
 import { useConversationStore } from '@/stores/conversationStore';
 import { useSettingsStore } from '@/stores/settingsStore';
 
@@ -22,6 +26,7 @@ export default function GeneratingScreen() {
   const setReplies = useConversationStore((s) => s.setReplies);
   const freeGenerationsUsed = useSettingsStore((s) => s.freeGenerationsUsed);
   const incrementGenerationsUsed = useSettingsStore((s) => s.incrementGenerationsUsed);
+  const setFreeGenerationsUsed = useSettingsStore((s) => s.setFreeGenerationsUsed);
 
   useEffect(() => {
     const interval = setInterval(() => setStep((s) => (s + 1) % LOADING_KEYS.length), 700);
@@ -42,10 +47,20 @@ export default function GeneratingScreen() {
         const result = await generateRepliesFromRequest(request);
         if (cancelled) return;
         setReplies(result.replies);
-        incrementGenerationsUsed();
+        if (typeof result.freeGenerationsUsed === 'number') {
+          setFreeGenerationsUsed(result.freeGenerationsUsed);
+        } else {
+          incrementGenerationsUsed();
+        }
         router.replace('/results');
-      } catch {
-        if (!cancelled) router.replace('/welcome');
+      } catch (error) {
+        if (cancelled) return;
+        if (error instanceof UsageExceededError) {
+          setFreeGenerationsUsed(FREE_GENERATIONS_LIMIT);
+          router.replace('/paywall');
+          return;
+        }
+        router.replace('/welcome');
       }
     }
 
@@ -60,6 +75,7 @@ export default function GeneratingScreen() {
     locale,
     messages,
     region,
+    setFreeGenerationsUsed,
     setReplies,
     tone,
   ]);
