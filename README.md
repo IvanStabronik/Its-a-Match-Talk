@@ -1,67 +1,48 @@
 # Its a Match Talk
 
-AI-помощник для переписки: загрузи чат или вставь текст → получи **3 живых ответа** без кринжа. Для знакомств и повседневного общения.
+**Relationship clarity analyzer** for dating chats: paste a conversation → see observable dynamics → get a next step and reply options.
 
-**Языки:** русский · українська · polski · English  
-**Платформы:** Android + iOS (Expo)  
-**Юрлицо:** JDG Ivan Stabronik (Poland)
+Languages: русский · українська · polski · English  
+Entity: JDG Ivan Stabronik (Poland)  
+Stack: Expo 57 · Supabase · OpenAI EU
 
 ---
 
-## Быстрый старт
+## Docs (start here)
+
+| Doc | Purpose |
+|-----|---------|
+| [`docs/PRODUCT_DIRECTION.md`](docs/PRODUCT_DIRECTION.md) | What we build / kill |
+| [`docs/requirements.md`](docs/requirements.md) | R0–R13 acceptance |
+| [`docs/architecture.md`](docs/architecture.md) | Pipeline + trust boundary |
+| [`docs/BACKLOG.md`](docs/BACKLOG.md) | Ordered tasks |
+| [`docs/DECISIONS.md`](docs/DECISIONS.md) | Locked choices |
+| [`docs/AGENT_TOOLKIT.md`](docs/AGENT_TOOLKIT.md) | How the coding agent works |
+| [`docs/SUPABASE_SETUP.md`](docs/SUPABASE_SETUP.md) | Dashboard / deploy checklist |
+| [`docs/seed/`](docs/seed/) | Historical Cue-era seed (OCR, privacy detail) |
+
+---
+
+## Quick start
 
 ```bash
 npm install
-npm start          # Expo dev server
-npm run android    # Android emulator
-npm test           # Unit tests
-npm run typecheck  # TypeScript
+npm start
+npm test
+npm run typecheck
 ```
 
-Скопируй `.env.example` → `.env` когда подключишь Supabase (Phase 1).
+Copy `.env.example` → `.env` for Supabase keys. Never commit `.env`.
 
 ---
 
-## Phase 0 (текущая)
+## What’s in the repo today
 
-Vertical slice **без OCR и платежей**:
-
-```
-Age Gate → Privacy → Welcome → Paste → Review → Customize → Generating → Results
-```
-
-Mock AI provider — 3 ответа на выбранном языке.
+- **Code:** Paste → Review → Customize → mock/Edge generate → 3 replies (Phase 0/1 scaffold)
+- **Next (BACKLOG P0):** Effort Balance metrics + analyzer results + paywall split
 
 ---
 
-## Структура
-
-| Путь | Назначение |
-|------|------------|
-| `app/` | Expo Router screens |
-| `src/i18n/` | Локализация RU / UK / PL / EN |
-| `src/services/` | Generation, conversation parsing |
-| `src/stores/` | Zustand (settings, conversation) |
-| `docs/seed/` | Исходная product documentation |
-| `docs/DECISIONS.md` | Принятые решения |
-
----
-
-## Roadmap
-
-| Phase | Содержание |
-|-------|------------|
-| **0** ✅ | Paste + mock AI (сейчас) |
-| **1** | Supabase + OpenAI EU Edge Function |
-| **2** | OCR (ML Kit + Vision) |
-| **3** | RevenueCat payments |
-| **4** | Privacy Policy, store assets |
-| **5** | App Store + Google Play submit |
-
-Подробнее: `docs/seed/14_ROADMAP.md`
-
----
-
-## Репозиторий
+## Repo
 
 https://github.com/IvanStabronik/Its-a-Match-Talk.git
