@@ -44,13 +44,25 @@ export function buildCompare(
 ): AnalysisCompare | null {
   if (!previous) return null;
   const effortDelta = current.mePercent - previous.mePercent;
+  const ghostChanged = Boolean(
+    previous.ghostRisk && current.ghostRisk && previous.ghostRisk !== current.ghostRisk,
+  );
+  const interestChanged = Boolean(
+    previous.interestTrend &&
+      current.interestTrend &&
+      previous.interestTrend !== current.interestTrend,
+  );
+
+  // Don't surface a noisy "0 pts" card when nothing meaningful changed
+  if (effortDelta === 0 && !ghostChanged && !interestChanged) {
+    return null;
+  }
+
   return {
     previous,
     effortDelta,
-    ghostChanged: Boolean(previous.ghostRisk && current.ghostRisk && previous.ghostRisk !== current.ghostRisk),
-    interestChanged: Boolean(
-      previous.interestTrend && current.interestTrend && previous.interestTrend !== current.interestTrend,
-    ),
+    ghostChanged,
+    interestChanged,
     effortImproved:
       effortDelta === 0 ? null : Math.abs(50 - current.mePercent) < Math.abs(50 - previous.mePercent),
   };

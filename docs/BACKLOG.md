@@ -43,8 +43,8 @@ Legend: `P0` now → `P1` next → `P2` modules → `P3` polish/store.
 
 ## P2 — Flag tracker module
 
-- [ ] Local event log (cancel, ghost, promise, initiative, conflict, boundary)
-- [ ] Chronology screen
+- [x] Local event log (cancel, ghost, promise, initiative, conflict, boundary)
+- [x] Chronology screen (`app/flags.tsx`)
 - [ ] Optional AI summary of *user-logged* events only
 
 ---

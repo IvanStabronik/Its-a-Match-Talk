@@ -46,6 +46,8 @@ export default function SettingsScreen() {
           {hasPremium ? t('settings.premiumOn') : t('settings.premiumOff')}
         </Text>
 
+        <Button title={t('flags.title')} variant="secondary" onPress={() => router.push('/flags')} />
+        <View style={{ height: 12 }} />
         <Button
           title={t('paywall.restore')}
           variant="secondary"

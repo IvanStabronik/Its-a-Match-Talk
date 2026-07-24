@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -20,12 +20,15 @@ const LOADING_KEYS = [
 export default function GeneratingScreen() {
   const { t, locale } = useTranslation();
   const [step, setStep] = useState(0);
+  const ran = useRef(false);
+
   const messages = useConversationStore((s) => s.messages);
   const goal = useConversationStore((s) => s.goal);
   const tone = useConversationStore((s) => s.tone);
   const region = useConversationStore((s) => s.region);
   const setAnalysis = useConversationStore((s) => s.setAnalysis);
   const setCompare = useConversationStore((s) => s.setCompare);
+  const clearConversationText = useConversationStore((s) => s.clearConversationText);
   const hasPremium = useSettingsStore((s) => s.hasPremium);
   const incrementGenerationsUsed = useSettingsStore((s) => s.incrementGenerationsUsed);
 
@@ -35,6 +38,8 @@ export default function GeneratingScreen() {
   }, []);
 
   useEffect(() => {
+    if (ran.current) return;
+    ran.current = true;
     let cancelled = false;
 
     async function run() {
@@ -69,6 +74,7 @@ export default function GeneratingScreen() {
 
         setAnalysis(result);
         setCompare(compare);
+        clearConversationText();
         if (hasPremium) incrementGenerationsUsed();
         router.replace('/results');
       } catch {
@@ -80,17 +86,9 @@ export default function GeneratingScreen() {
     return () => {
       cancelled = true;
     };
-  }, [
-    goal,
-    hasPremium,
-    incrementGenerationsUsed,
-    locale,
-    messages,
-    region,
-    setAnalysis,
-    setCompare,
-    tone,
-  ]);
+    // Intentionally once per mount — avoid double snapshot / double quota.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

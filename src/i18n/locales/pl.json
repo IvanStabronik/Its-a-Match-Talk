@@ -126,6 +126,28 @@
     "subtitle": "OCR na urządzeniu wkrótce. Możesz wybrać zdjęcie; jeśli rozpoznawanie nie gotowe — wklej tekst.",
     "pick": "Wybierz zdjęcie"
   },
+  "flags": {
+    "title": "Dziennik zachowania",
+    "subtitle": "Zapisuj fakty — nie domysły o uczuciach. Ty wpisujesz zdarzenia; aplikacja trzyma chronologię.",
+    "add": "Dodaj zdarzenie",
+    "save": "Zapisz",
+    "timeline": "Chronologia",
+    "empty": "Na razie pusto.",
+    "remove": "Usuń",
+    "notePlaceholder": "Krótko: co się stało (opcjonalnie)",
+    "red": "Uwaga",
+    "green": "Plus",
+    "summary": "Uwaga {{red}} · Plus {{green}}",
+    "disclaimer": "To Twój log obserwowalnych zdarzeń. Nikogo nie «diagnozujemy».",
+    "kinds": {
+      "cancelled_plan": "Odwołany plan",
+      "disappeared": "Zniknięcie / długa cisza",
+      "broken_promise": "Niespełniona obietnica",
+      "initiative": "Przejawili inicjatywę",
+      "conflict": "Konflikt / brak szacunku",
+      "boundary_respect": "Uszanowali granicę"
+    }
+  },
   "paywall": {
     "title": "Zobacz pełny obraz",
     "subtitle": "Effort Balance zostaje darmowy. Subskrypcja otwiera dynamikę, krok i odpowiedzi.",

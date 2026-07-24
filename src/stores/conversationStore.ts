@@ -30,6 +30,8 @@ type ConversationState = {
   setReplies: (replies: Reply[]) => void;
   setAnalysis: (analysis: AnalysisResult) => void;
   setCompare: (compare: AnalysisCompare | null) => void;
+  /** Drop conversation text from memory after analysis (privacy). */
+  clearConversationText: () => void;
   reset: () => void;
 };
 
@@ -64,5 +66,6 @@ export const useConversationStore = create<ConversationState>((set) => ({
       replies: analysis.paid?.replies ?? [],
     }),
   setCompare: (compare) => set({ compare }),
+  clearConversationText: () => set({ messages: [], rawPaste: '' }),
   reset: () => set({ ...defaultState }),
 }));

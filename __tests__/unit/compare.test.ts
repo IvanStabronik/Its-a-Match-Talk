@@ -33,4 +33,15 @@ describe('buildCompare', () => {
     expect(compare?.ghostChanged).toBe(true);
     expect(compare?.interestChanged).toBe(true);
   });
+
+  it('returns null when nothing meaningful changed', () => {
+    const snap: AnalysisSnapshot = {
+      at: '2026-07-25T00:00:00Z',
+      mePercent: 55,
+      themPercent: 45,
+      ghostRisk: 'medium',
+      interestTrend: 'flat',
+    };
+    expect(buildCompare(snap, { ...snap, at: '2026-07-26T00:00:00Z' })).toBeNull();
+  });
 });

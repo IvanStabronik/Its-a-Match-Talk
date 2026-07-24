@@ -22,6 +22,8 @@ export default function WelcomeScreen() {
         <View style={{ height: 12 }} />
         <Button title={t('welcome.uploadScreenshot')} variant="secondary" onPress={() => router.push('/upload')} />
         <View style={{ height: 12 }} />
+        <Button title={t('flags.title')} variant="secondary" onPress={() => router.push('/flags')} />
+        <View style={{ height: 12 }} />
         <Button title={t('settings.title')} variant="ghost" onPress={() => router.push('/settings')} />
         <View style={{ height: 8 }} />
         <Button

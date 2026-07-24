@@ -1,7 +1,9 @@
 import type { EffortBalance, HotColdSegment, InterestTrend, Message, GhostBand } from '@/types/domain';
 
-const GAP_INITIATION_CHARS = 0; // without timestamps, treat speaker change after unknown as weak signal
-
+/**
+ * Effort / dynamics from observable message structure only.
+ * Without timestamps we do NOT treat every turn-take as "initiation".
+ */
 export function computeEffortBalance(messages: Message[]): EffortBalance {
   const usable = messages.filter((m) => m.speaker === 'me' || m.speaker === 'them');
   let volumeMe = 0;
@@ -13,12 +15,16 @@ export function computeEffortBalance(messages: Message[]): EffortBalance {
   let initiationMe = 0;
   let initiationThem = 0;
 
+  let streakSpeaker: 'me' | 'them' | null = null;
+  let streakLen = 0;
+
   for (let i = 0; i < usable.length; i++) {
     const m = usable[i]!;
     const len = m.text.trim().length;
     const hasQ = m.text.includes('?');
+    const speaker = m.speaker as 'me' | 'them';
 
-    if (m.speaker === 'me') {
+    if (speaker === 'me') {
       volumeMe += len;
       messageCountMe += 1;
       if (hasQ) questionsMe += 1;
@@ -28,36 +34,41 @@ export function computeEffortBalance(messages: Message[]): EffortBalance {
       if (hasQ) questionsThem += 1;
     }
 
-    // Initiation proxy without timestamps: first message, or speaker after 2+ from the other side streak break
     if (i === 0) {
-      if (m.speaker === 'me') initiationMe += 1;
+      if (speaker === 'me') initiationMe += 1;
       else initiationThem += 1;
+      streakSpeaker = speaker;
+      streakLen = 1;
+      continue;
+    }
+
+    if (streakSpeaker === speaker) {
+      streakLen += 1;
     } else {
-      const prev = usable[i - 1]!;
-      if (prev.speaker !== m.speaker) {
-        // count as "picking up the thread" when previous was other person
-        if (m.speaker === 'me') initiationMe += 1;
+      // Re-engage only after the other side sent a streak of 2+ (not every ping-pong turn).
+      if (streakLen >= 2) {
+        if (speaker === 'me') initiationMe += 1;
         else initiationThem += 1;
       }
+      streakSpeaker = speaker;
+      streakLen = 1;
     }
   }
-
-  void GAP_INITIATION_CHARS;
 
   const volumeTotal = volumeMe + volumeThem || 1;
   const initTotal = initiationMe + initiationThem || 1;
   const msgTotal = messageCountMe + messageCountThem || 1;
   const qTotal = questionsMe + questionsThem || 1;
 
-  // Composite: volume 40%, messages 25%, initiation 25%, questions 10%
+  // Volume 45%, messages 30%, initiation 15%, questions 10%
   const meScore =
-    0.4 * (volumeMe / volumeTotal) +
-    0.25 * (messageCountMe / msgTotal) +
-    0.25 * (initiationMe / initTotal) +
+    0.45 * (volumeMe / volumeTotal) +
+    0.3 * (messageCountMe / msgTotal) +
+    0.15 * (initiationMe / initTotal) +
     0.1 * (questionsMe / qTotal);
 
-  const mePercent = Math.round(meScore * 100);
-  const themPercent = Math.max(0, 100 - mePercent);
+  const mePercent = clampPercent(Math.round(meScore * 100));
+  const themPercent = 100 - mePercent;
 
   return {
     mePercent,
@@ -87,8 +98,8 @@ function pickEffortBullets(
   else if (mePercent <= 35) keys.push('insights.effort.bullets.theyLead');
   else keys.push('insights.effort.bullets.balanced');
 
-  if (initiationMe > initiationThem + 1) keys.push('insights.effort.bullets.youInitiateMore');
-  else if (initiationThem > initiationMe + 1) keys.push('insights.effort.bullets.theyInitiateMore');
+  if (initiationMe > initiationThem) keys.push('insights.effort.bullets.youInitiateMore');
+  else if (initiationThem > initiationMe) keys.push('insights.effort.bullets.theyInitiateMore');
 
   if (questionsMe > questionsThem + 1) keys.push('insights.effort.bullets.youAskMore');
   else if (questionsThem > questionsMe + 1) keys.push('insights.effort.bullets.theyAskMore');
@@ -103,6 +114,7 @@ export function computeInterestTrend(messages: Message[]): InterestTrend {
   const third = Math.max(1, Math.floor(them.length / 3));
   const early = avgLen(them.slice(0, third));
   const late = avgLen(them.slice(-third));
+  if (early === 0) return late > 0 ? 'up' : 'flat';
 
   if (late > early * 1.25) return 'up';
   if (late < early * 0.75) return 'down';
@@ -114,19 +126,22 @@ export function computeGhostRisk(messages: Message[]): GhostBand {
   if (usable.length < 4) return 'low';
 
   const them = usable.filter((m) => m.speaker === 'them');
+  const me = usable.filter((m) => m.speaker === 'me');
   const trend = computeInterestTrend(usable);
   const last = usable[usable.length - 1];
   const unansweredOpener = last?.speaker === 'me';
 
-  const lateThem = them.slice(-Math.max(1, Math.floor(them.length / 3)));
-  const earlyThem = them.slice(0, Math.max(1, Math.floor(them.length / 3)));
-  const shrinking = avgLen(lateThem) < avgLen(earlyThem) * 0.7;
+  const slice = Math.max(1, Math.floor(them.length / 3));
+  const lateThem = them.slice(-slice);
+  const earlyThem = them.slice(0, slice);
+  const earlyAvg = avgLen(earlyThem);
+  const shrinking = earlyAvg > 0 && avgLen(lateThem) < earlyAvg * 0.7;
 
   let score = 0;
   if (trend === 'down') score += 2;
   if (shrinking) score += 1;
   if (unansweredOpener) score += 1;
-  if (them.length > 0 && usable.filter((m) => m.speaker === 'me').length > them.length * 1.8) score += 1;
+  if (them.length > 0 && me.length > them.length * 1.8) score += 1;
 
   if (score >= 3) return 'high';
   if (score >= 1) return 'medium';
@@ -143,9 +158,8 @@ export function computeHotColdTimeline(messages: Message[]): HotColdSegment[] {
     ];
   }
 
-  const third = Math.max(1, Math.floor(them.length / 3));
-  const parts = [them.slice(0, third), them.slice(third, third * 2), them.slice(third * 2)];
-  const lens = parts.map((p) => avgLen(p.length ? p : them));
+  const chunks = splitIntoThirds(them);
+  const lens = chunks.map((chunk) => avgLen(chunk));
   const max = Math.max(...lens, 1);
 
   return [
@@ -153,6 +167,18 @@ export function computeHotColdTimeline(messages: Message[]): HotColdSegment[] {
     { label: 'mid', engagement: Math.round((lens[1]! / max) * 100) },
     { label: 'late', engagement: Math.round((lens[2]! / max) * 100) },
   ];
+}
+
+/** Stable thirds even for short arrays — never reuse full list for an empty bucket. */
+export function splitIntoThirds<T>(items: T[]): [T[], T[], T[]] {
+  if (items.length === 0) return [[], [], []];
+  if (items.length === 1) return [[items[0]!], [items[0]!], [items[0]!]];
+  if (items.length === 2) return [[items[0]!], [items[0]!, items[1]!], [items[1]!]];
+
+  const n = items.length;
+  const a = Math.floor(n / 3);
+  const b = Math.floor((2 * n) / 3);
+  return [items.slice(0, a), items.slice(a, b), items.slice(b)];
 }
 
 export function pickNextStepKeys(
@@ -187,4 +213,8 @@ export function pickNextStepKeys(
 function avgLen(messages: Message[]): number {
   if (!messages.length) return 0;
   return messages.reduce((sum, m) => sum + m.text.trim().length, 0) / messages.length;
+}
+
+function clampPercent(n: number): number {
+  return Math.min(100, Math.max(0, n));
 }

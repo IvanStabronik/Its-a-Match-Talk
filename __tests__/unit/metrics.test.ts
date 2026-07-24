@@ -5,6 +5,7 @@ import {
   computeEffortBalance,
   computeGhostRisk,
   computeInterestTrend,
+  splitIntoThirds,
 } from '@/services/metrics';
 import { containsBannedDiagnosis } from '@/services/validator';
 import type { Message } from '@/types/domain';
@@ -25,6 +26,15 @@ const balanced: Message[] = [
   { id: '4', speaker: 'me', text: 'Friday works — coffee?' },
 ];
 
+const pingPong: Message[] = [
+  { id: '1', speaker: 'me', text: 'Hi' },
+  { id: '2', speaker: 'them', text: 'Hi' },
+  { id: '3', speaker: 'me', text: 'How are you?' },
+  { id: '4', speaker: 'them', text: 'Good' },
+  { id: '5', speaker: 'me', text: 'Plans?' },
+  { id: '6', speaker: 'them', text: 'Maybe' },
+];
+
 describe('computeEffortBalance', () => {
   it('flags heavier me investment', () => {
     const effort = computeEffortBalance(meHeavy);
@@ -35,6 +45,23 @@ describe('computeEffortBalance', () => {
   it('looks more balanced on reciprocal chat', () => {
     const effort = computeEffortBalance(balanced);
     expect(Math.abs(effort.mePercent - 50)).toBeLessThanOrEqual(25);
+  });
+
+  it('does not count every turn-take as initiation', () => {
+    const effort = computeEffortBalance(pingPong);
+    // Only the opening message qualifies — no 2+ streaks before switches
+    expect(effort.initiationMe + effort.initiationThem).toBe(1);
+  });
+});
+
+describe('splitIntoThirds', () => {
+  it('never returns an empty bucket for short lists', () => {
+    expect(splitIntoThirds([1, 2]).every((c) => c.length > 0)).toBe(true);
+    expect(splitIntoThirds([1, 2, 3, 4, 5, 6])).toEqual([
+      [1, 2],
+      [3, 4],
+      [5, 6],
+    ]);
   });
 });
 

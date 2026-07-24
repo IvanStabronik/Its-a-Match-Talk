@@ -126,6 +126,28 @@
     "subtitle": "On-device OCR is coming. You can pick a photo now; if recognition isn’t ready, paste the chat.",
     "pick": "Choose photo"
   },
+  "flags": {
+    "title": "Behavior log",
+    "subtitle": "Log what happened — not what you guess they feel. You write the events; the app only keeps the chronology.",
+    "add": "Add event",
+    "save": "Save event",
+    "timeline": "Chronology",
+    "empty": "No events yet.",
+    "remove": "Remove",
+    "notePlaceholder": "Optional short note (what happened)",
+    "red": "Caution",
+    "green": "Positive",
+    "summary": "Caution {{red}} · Positive {{green}}",
+    "disclaimer": "This is your log of observable events. It does not diagnose anyone.",
+    "kinds": {
+      "cancelled_plan": "Cancelled plan",
+      "disappeared": "Disappeared / delayed reply streak",
+      "broken_promise": "Broken promise",
+      "initiative": "They initiated",
+      "conflict": "Conflict / disrespect",
+      "boundary_respect": "Respected a boundary"
+    }
+  },
   "paywall": {
     "title": "See the full picture",
     "subtitle": "Effort Balance stays free. Subscription unlocks dynamics, next step, and replies.",
