@@ -10,11 +10,11 @@
     "language": "Language"
   },
   "welcome": {
-    "title": "Replies without cringe",
-    "subtitle": "Paste your chat — get 3 natural reply options. For dating and everyday conversations.",
+    "title": "Clarity for your chats",
+    "subtitle": "Paste a conversation — see effort balance, then unlock deeper dynamics and reply options.",
     "uploadScreenshot": "Upload screenshot",
     "pasteText": "Paste text",
-    "freeGenerationsLeft": "Free generations left: {{count}}",
+    "freeGenerationsLeft": "Free analyses left: {{count}}",
     "comingSoon": "Coming soon"
   },
   "paste": {
@@ -29,36 +29,99 @@
     "speakerMe": "Me",
     "speakerThem": "Them",
     "speakerUnknown": "Unknown",
-    "contextHint": "More context — better replies",
-    "fewMessagesWarning": "Few messages — replies may be less accurate",
-    "proceed": "Next"
+    "contextHint": "Assign who is who — analysis uses observable patterns only",
+    "fewMessagesWarning": "Few messages — insights may be less precise",
+    "proceed": "Next",
+    "analyze": "Analyze chat"
   },
   "customize": {
-    "title": "Customize reply",
+    "title": "Customize replies",
     "region": "Region",
     "goal": "Goal",
     "tone": "Tone",
-    "generate": "Generate"
+    "generate": "Update & analyze"
   },
   "generating": {
-    "reading": "Reading context…",
-    "checking": "Checking tone…",
-    "polishing": "Removing cringe…"
+    "reading": "Reading the chat…",
+    "checking": "Checking patterns…",
+    "measuring": "Measuring effort…",
+    "polishing": "Keeping it grounded…"
   },
   "results": {
-    "title": "Your replies",
+    "title": "Reply options",
     "whyThisWorks": "Why this works",
-    "regenerate": "Generate again",
+    "regenerate": "Analyze again",
     "variantSafe": "Calm",
     "variantPlayful": "Playful",
     "variantBold": "Bold",
     "newConversation": "New conversation"
   },
+  "insights": {
+    "title": "Chat clarity",
+    "subtitle": "Based on what appears in the messages — not on guessing feelings.",
+    "disclaimer": "This is a pattern summary from the text you pasted, not a verdict about anyone’s feelings.",
+    "effort": {
+      "title": "Effort balance",
+      "you": "You",
+      "them": "Them",
+      "bullets": {
+        "youLead": "You are carrying more of the conversational load in this snippet.",
+        "theyLead": "They are carrying more of the conversational load in this snippet.",
+        "balanced": "Message effort looks roughly shared in this snippet.",
+        "youInitiateMore": "You pick up the thread more often after the other person.",
+        "theyInitiateMore": "They pick up the thread more often after you.",
+        "youAskMore": "You ask more questions than they do here.",
+        "theyAskMore": "They ask more questions than you do here."
+      }
+    },
+    "interest": {
+      "title": "Interest trend",
+      "up": "Their message engagement looks stronger toward the end of this chat.",
+      "flat": "Their engagement looks fairly steady across this chat.",
+      "down": "Their message engagement looks lighter toward the end of this chat."
+    },
+    "ghost": {
+      "title": "Ghost risk (pattern)",
+      "low": "Low — no strong cooling pattern in this snippet.",
+      "medium": "Medium — some cooling or imbalance signals appear.",
+      "high": "High — several cooling or unanswered-opener signals appear. Consider slowing down."
+    },
+    "timeline": {
+      "title": "Hot / cold timeline",
+      "early": "Early",
+      "mid": "Middle",
+      "late": "Late"
+    },
+    "nextStep": {
+      "title": "Suggested next step",
+      "coolDown": "Slow the pace",
+      "coolDownDetail": "Give space before another long message. One light check-in is enough.",
+      "proposeMeet": "Suggest meeting",
+      "proposeMeetDetail": "Engagement looks reciprocal enough to propose a low-pressure plan.",
+      "wait": "Wait for their move",
+      "waitDetail": "You’ve already invested more — let them reopen the thread.",
+      "clarify": "Clarify lightly",
+      "clarifyDetail": "Ask one clear question about plans or interest — without pressure."
+    },
+    "locked": {
+      "title": "Full clarity is locked",
+      "body": "Effort Balance is free. Unlock deeper patterns and reply options.",
+      "itemInterest": "Interest trend",
+      "itemGhost": "Ghost risk + timeline",
+      "itemReplies": "Next step + 3 replies",
+      "cta": "Unlock insights"
+    }
+  },
   "paywall": {
-    "title": "More replies — less awkwardness",
-    "subtitle": "3 free generations. Then subscription or pack.",
+    "title": "See the full picture",
+    "subtitle": "Effort Balance stays free. Subscription unlocks dynamics, next step, and replies.",
     "restore": "Restore purchases",
-    "bestValue": "Best value"
+    "bestValue": "Best value",
+    "featureInterest": "Interest trend across the chat",
+    "featureGhost": "Ghost-risk pattern band",
+    "featureReplies": "Next step + 3 grounded replies",
+    "featureCompare": "Re-analyze later (compare coming soon)",
+    "unlockDev": "Unlock for testing"
   },
   "settings": {
     "title": "Settings",

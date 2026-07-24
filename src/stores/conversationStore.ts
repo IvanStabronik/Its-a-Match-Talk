@@ -1,6 +1,14 @@
 import { create } from 'zustand';
 
-import type { GoalId, Message, RegionId, Reply, ToneId } from '@/types/domain';
+import type {
+  AnalysisResult,
+  EffortBalance,
+  GoalId,
+  Message,
+  RegionId,
+  Reply,
+  ToneId,
+} from '@/types/domain';
 
 type ConversationState = {
   messages: Message[];
@@ -9,6 +17,8 @@ type ConversationState = {
   tone: ToneId;
   region: RegionId;
   replies: Reply[];
+  effort: EffortBalance | null;
+  analysis: AnalysisResult | null;
   setRawPaste: (text: string) => void;
   setMessages: (messages: Message[]) => void;
   updateMessage: (id: string, patch: Partial<Message>) => void;
@@ -16,6 +26,7 @@ type ConversationState = {
   setTone: (tone: ToneId) => void;
   setRegion: (region: RegionId) => void;
   setReplies: (replies: Reply[]) => void;
+  setAnalysis: (analysis: AnalysisResult) => void;
   reset: () => void;
 };
 
@@ -26,6 +37,8 @@ const defaultState = {
   tone: 'playful' as ToneId,
   region: 'Auto' as RegionId,
   replies: [] as Reply[],
+  effort: null as EffortBalance | null,
+  analysis: null as AnalysisResult | null,
 };
 
 export const useConversationStore = create<ConversationState>((set) => ({
@@ -40,5 +53,11 @@ export const useConversationStore = create<ConversationState>((set) => ({
   setTone: (tone) => set({ tone }),
   setRegion: (region) => set({ region }),
   setReplies: (replies) => set({ replies }),
+  setAnalysis: (analysis) =>
+    set({
+      analysis,
+      effort: analysis.effort,
+      replies: analysis.paid?.replies ?? [],
+    }),
   reset: () => set({ ...defaultState }),
 }));

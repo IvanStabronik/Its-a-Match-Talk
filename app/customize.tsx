@@ -58,7 +58,7 @@ export default function CustomizeScreen() {
             />
           ))}
         </ScrollView>
-        <Button title={t('customize.generate')} onPress={() => router.push('/generating')} />
+        <Button title={t('customize.generate')} onPress={() => router.replace('/generating')} />
       </Screen>
     </SafeAreaView>
   );

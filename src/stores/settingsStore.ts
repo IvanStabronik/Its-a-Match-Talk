@@ -10,12 +10,15 @@ type SettingsState = {
   ageConfirmed: boolean;
   privacyAccepted: boolean;
   freeGenerationsUsed: number;
+  /** P0 stub until RevenueCat — unlocks paid insight blocks */
+  hasPremium: boolean;
   setLocale: (locale: AppLocale) => void;
   confirmAge: () => void;
   acceptPrivacy: () => void;
   incrementGenerationsUsed: () => void;
   setFreeGenerationsUsed: (count: number) => void;
   resetGenerationsUsed: () => void;
+  setPremium: (value: boolean) => void;
 };
 
 const initialLocale = resolveDeviceLocale();
@@ -28,6 +31,7 @@ export const useSettingsStore = create<SettingsState>()(
       ageConfirmed: false,
       privacyAccepted: false,
       freeGenerationsUsed: 0,
+      hasPremium: false,
       setLocale: (locale) => {
         setI18nLocale(locale);
         set({ locale });
@@ -38,6 +42,7 @@ export const useSettingsStore = create<SettingsState>()(
         set((state) => ({ freeGenerationsUsed: state.freeGenerationsUsed + 1 })),
       setFreeGenerationsUsed: (count) => set({ freeGenerationsUsed: count }),
       resetGenerationsUsed: () => set({ freeGenerationsUsed: 0 }),
+      setPremium: (value) => set({ hasPremium: value }),
     }),
     {
       name: 'imt-settings',
@@ -47,6 +52,7 @@ export const useSettingsStore = create<SettingsState>()(
         ageConfirmed: state.ageConfirmed,
         privacyAccepted: state.privacyAccepted,
         freeGenerationsUsed: state.freeGenerationsUsed,
+        hasPremium: state.hasPremium,
       }),
       onRehydrateStorage: () => (state) => {
         if (state?.locale) {

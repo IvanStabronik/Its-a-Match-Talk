@@ -10,11 +10,11 @@
     "language": "Język"
   },
   "welcome": {
-    "title": "Odpowiedzi bez cringe",
-    "subtitle": "Wklej rozmowę — dostaniesz 3 naturalne warianty odpowiedzi. Na randki i na co dzień.",
+    "title": "Jasność w rozmowie",
+    "subtitle": "Wklej czat — zobacz bilans wysiłku, a głębiej: dynamikę i propozycje odpowiedzi.",
     "uploadScreenshot": "Prześlij zrzut ekranu",
     "pasteText": "Wklej tekst",
-    "freeGenerationsLeft": "Pozostało darmowych generacji: {{count}}",
+    "freeGenerationsLeft": "Pozostało darmowych analiz: {{count}}",
     "comingSoon": "Wkrótce"
   },
   "paste": {
@@ -29,36 +29,99 @@
     "speakerMe": "Ja",
     "speakerThem": "Oni",
     "speakerUnknown": "Nieznany",
-    "contextHint": "Więcej kontekstu — lepsze odpowiedzi",
-    "fewMessagesWarning": "Mało wiadomości — odpowiedzi mogą być mniej trafne",
-    "proceed": "Dalej"
+    "contextHint": "Oznacz kto jest kim — analiza tylko po widocznych wzorcach",
+    "fewMessagesWarning": "Mało wiadomości — wnioski mogą być mniej precyzyjne",
+    "proceed": "Dalej",
+    "analyze": "Analizuj czat"
   },
   "customize": {
-    "title": "Dostosuj odpowiedź",
+    "title": "Dostosuj odpowiedzi",
     "region": "Region",
     "goal": "Cel",
     "tone": "Ton",
-    "generate": "Generuj"
+    "generate": "Zaktualizuj i analizuj"
   },
   "generating": {
-    "reading": "Czytam kontekst…",
-    "checking": "Sprawdzam ton…",
-    "polishing": "Usuwam cringe…"
+    "reading": "Czytam rozmowę…",
+    "checking": "Patrzę na wzorce…",
+    "measuring": "Liczenie wysiłku…",
+    "polishing": "Bez domysłów…"
   },
   "results": {
-    "title": "Twoje odpowiedzi",
+    "title": "Propozycje odpowiedzi",
     "whyThisWorks": "Dlaczego to działa",
-    "regenerate": "Generuj ponownie",
+    "regenerate": "Analizuj ponownie",
     "variantSafe": "Spokojny",
     "variantPlayful": "Zabawny",
     "variantBold": "Śmiały",
     "newConversation": "Nowa rozmowa"
   },
+  "insights": {
+    "title": "Jasność czatu",
+    "subtitle": "Na podstawie tego, co widać w wiadomościach — bez zgadywania uczuć.",
+    "disclaimer": "To skrót wzorców z wklejonego tekstu, nie wyrok o czyichś uczuciach.",
+    "effort": {
+      "title": "Bilans wysiłku",
+      "you": "Ty",
+      "them": "Oni",
+      "bullets": {
+        "youLead": "W tym fragmencie więcej obciążenia jest po Twojej stronie.",
+        "theyLead": "W tym fragmencie więcej obciążenia jest po ich stronie.",
+        "balanced": "Wysiłek wygląda na w miarę równy.",
+        "youInitiateMore": "Częściej podejmujesz wątek po nich.",
+        "theyInitiateMore": "Częściej podejmują wątek po Tobie.",
+        "youAskMore": "Zadajesz więcej pytań.",
+        "theyAskMore": "Zadają więcej pytań."
+      }
+    },
+    "interest": {
+      "title": "Trend zaangażowania",
+      "up": "Pod koniec fragmentu ich wiadomości wyglądają żywsze.",
+      "flat": "Ich zaangażowanie wygląda względnie równe.",
+      "down": "Pod koniec fragmentu ich wiadomości wyglądają krótsze / słabsze."
+    },
+    "ghost": {
+      "title": "Ryzyko zniknięcia (wzór)",
+      "low": "Niskie — nie widać silnego wychłodzenia.",
+      "medium": "Średnie — widać oznaki wychłodzenia lub nierównowagi.",
+      "high": "Wysokie — kilka sygnałów wychłodzenia. Warto zwolnić."
+    },
+    "timeline": {
+      "title": "Timeline hot / cold",
+      "early": "Początek",
+      "mid": "Środek",
+      "late": "Koniec"
+    },
+    "nextStep": {
+      "title": "Sugerowany kolejny krok",
+      "coolDown": "Zwolnij tempo",
+      "coolDownDetail": "Daj przestrzeń. Wystarczy jedna lekka wiadomość.",
+      "proposeMeet": "Zaproponuj spotkanie",
+      "proposeMeetDetail": "Dynamika jest na tyle wzajemna, by spokojnie zaproponować plan.",
+      "wait": "Poczekaj na ich ruch",
+      "waitDetail": "Już zainwestowałeś więcej — niech oni otworzą temat.",
+      "clarify": "Delikatnie doprecyzuj",
+      "clarifyDetail": "Jedno spokojne pytanie o plany lub zainteresowanie — bez presji."
+    },
+    "locked": {
+      "title": "Pełna analiza zablokowana",
+      "body": "Bilans wysiłku jest darmowy. Odblokuj dynamikę i odpowiedzi.",
+      "itemInterest": "Trend zaangażowania",
+      "itemGhost": "Ryzyko zniknięcia + timeline",
+      "itemReplies": "Kolejny krok + 3 odpowiedzi",
+      "cta": "Odblokuj insighty"
+    }
+  },
   "paywall": {
-    "title": "Więcej odpowiedzi — mniej niezręczności",
-    "subtitle": "3 darmowe generacje. Potem subskrypcja lub pakiet.",
+    "title": "Zobacz pełny obraz",
+    "subtitle": "Effort Balance zostaje darmowy. Subskrypcja otwiera dynamikę, krok i odpowiedzi.",
     "restore": "Przywróć zakupy",
-    "bestValue": "Najlepsza oferta"
+    "bestValue": "Najlepsza oferta",
+    "featureInterest": "Trend zaangażowania",
+    "featureGhost": "Wzorzec ryzyka zniknięcia",
+    "featureReplies": "Kolejny krok + 3 odpowiedzi",
+    "featureCompare": "Ponowna analiza (porównanie wkrótce)",
+    "unlockDev": "Odblokuj do testów"
   },
   "settings": {
     "title": "Ustawienia",

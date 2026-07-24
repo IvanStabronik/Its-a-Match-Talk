@@ -39,6 +39,38 @@ export type Reply = {
   whyThisWorks: string;
 };
 
+export type InterestTrend = 'up' | 'flat' | 'down';
+export type GhostBand = 'low' | 'medium' | 'high';
+
+export type EffortBalance = {
+  mePercent: number;
+  themPercent: number;
+  initiationMe: number;
+  initiationThem: number;
+  volumeMe: number;
+  volumeThem: number;
+  questionsMe: number;
+  questionsThem: number;
+  messageCountMe: number;
+  messageCountThem: number;
+  bulletKeys: string[];
+};
+
+export type HotColdSegment = {
+  label: 'early' | 'mid' | 'late';
+  engagement: number;
+};
+
+export type AnalysisInsights = {
+  effort: EffortBalance;
+  interestTrend: InterestTrend;
+  ghostRisk: GhostBand;
+  timeline: HotColdSegment[];
+  nextStepKey: string;
+  nextStepDetailKey: string;
+  replies: Reply[];
+};
+
 export type GenerationRequest = {
   messages: Message[];
   goal: GoalId;
@@ -50,4 +82,13 @@ export type GenerationRequest = {
 export type GenerationResult = {
   replies: Reply[];
   detectedRegion?: RegionId;
+  freeGenerationsUsed?: number;
+};
+
+export type AnalysisResult = {
+  effort: EffortBalance;
+  /** Present when premium / full analyze ran */
+  paid?: Omit<AnalysisInsights, 'effort'>;
+  detectedRegion?: RegionId;
+  freeGenerationsUsed?: number;
 };

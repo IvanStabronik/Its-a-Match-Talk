@@ -52,7 +52,11 @@ export default function ReviewScreen() {
             />
           ))}
         </ScrollView>
-        <Button title={t('review.proceed')} onPress={() => router.push('/customize')} />
+        <Button
+          title={t('review.analyze')}
+          disabled={messages.filter((m) => m.speaker === 'me' || m.speaker === 'them').length < 2}
+          onPress={() => router.push('/generating')}
+        />
       </Screen>
     </SafeAreaView>
   );

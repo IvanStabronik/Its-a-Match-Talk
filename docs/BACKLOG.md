@@ -19,15 +19,14 @@ Legend: `P0` now → `P1` next → `P2` modules → `P3` polish/store.
 
 ## P0 — Analyzer vertical slice (code)
 
-- [ ] `src/services/metrics.ts` — Effort Balance signals + composite score
-- [ ] Unit tests for metrics (fixtures in `__tests__/fixtures/chats.*`)
-- [ ] Results UI: show Effort Balance after review (before/without full AI)
-- [ ] Soften/remove mandatory Customize gate before first insight
-- [ ] Edge: extend `generate` → `analyze` response schema  
-      `{ effort, interestTrend?, ghostRisk?, timeline?, nextStep?, replies[3] }`
-- [ ] Shared `validator`: banned diagnosis lexicon (RU/UK/PL/EN)
-- [ ] System prompt: observable-only rules + JSON schema
-- [ ] Wire paywall: free sees Effort; paid fields gated
+- [x] `src/services/metrics.ts` — Effort Balance signals + composite score
+- [x] Unit tests for metrics (`__tests__/unit/metrics.test.ts`)
+- [x] Results UI: Effort Balance free + locked paid blocks
+- [x] Soften/remove mandatory Customize gate (Review → Analyze)
+- [x] Client `analyze` path + local full insights when premium
+- [x] Shared `validator`: banned diagnosis lexicon
+- [x] Edge prompt: observable-only rules (redeploy needed)
+- [x] Paywall stub unlocks premium for testing
 - [ ] Finish Supabase setup: Anonymous Auth + SQL migration applied + `functions deploy` + secrets
 
 ---

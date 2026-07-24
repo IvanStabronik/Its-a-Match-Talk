@@ -4,17 +4,17 @@ import { ActivityIndicator, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Screen } from '@/components/ui';
-import { FREE_GENERATIONS_LIMIT } from '@/config/constants';
 import { useTranslation } from '@/hooks/useTranslation';
-import {
-  buildGenerationRequest,
-  generateRepliesFromRequest,
-  UsageExceededError,
-} from '@/services/generation';
+import { runAnalysis } from '@/services/analyzeRemote';
 import { useConversationStore } from '@/stores/conversationStore';
 import { useSettingsStore } from '@/stores/settingsStore';
 
-const LOADING_KEYS = ['generating.reading', 'generating.checking', 'generating.polishing'] as const;
+const LOADING_KEYS = [
+  'generating.reading',
+  'generating.checking',
+  'generating.measuring',
+  'generating.polishing',
+] as const;
 
 export default function GeneratingScreen() {
   const { t, locale } = useTranslation();
@@ -23,10 +23,9 @@ export default function GeneratingScreen() {
   const goal = useConversationStore((s) => s.goal);
   const tone = useConversationStore((s) => s.tone);
   const region = useConversationStore((s) => s.region);
-  const setReplies = useConversationStore((s) => s.setReplies);
-  const freeGenerationsUsed = useSettingsStore((s) => s.freeGenerationsUsed);
+  const setAnalysis = useConversationStore((s) => s.setAnalysis);
+  const hasPremium = useSettingsStore((s) => s.hasPremium);
   const incrementGenerationsUsed = useSettingsStore((s) => s.incrementGenerationsUsed);
-  const setFreeGenerationsUsed = useSettingsStore((s) => s.setFreeGenerationsUsed);
 
   useEffect(() => {
     const interval = setInterval(() => setStep((s) => (s + 1) % LOADING_KEYS.length), 700);
@@ -37,30 +36,28 @@ export default function GeneratingScreen() {
     let cancelled = false;
 
     async function run() {
-      if (freeGenerationsUsed >= FREE_GENERATIONS_LIMIT) {
-        router.replace('/paywall');
-        return;
-      }
-
       try {
-        const request = buildGenerationRequest({ messages, goal, tone, region, locale });
-        const result = await generateRepliesFromRequest(request);
-        if (cancelled) return;
-        setReplies(result.replies);
-        if (typeof result.freeGenerationsUsed === 'number') {
-          setFreeGenerationsUsed(result.freeGenerationsUsed);
-        } else {
-          incrementGenerationsUsed();
-        }
-        router.replace('/results');
-      } catch (error) {
-        if (cancelled) return;
-        if (error instanceof UsageExceededError) {
-          setFreeGenerationsUsed(FREE_GENERATIONS_LIMIT);
-          router.replace('/paywall');
+        const assigned = messages.filter((m) => m.speaker === 'me' || m.speaker === 'them');
+        if (assigned.length < 2) {
+          router.replace('/review');
           return;
         }
-        router.replace('/welcome');
+
+        const result = await runAnalysis({
+          messages,
+          goal,
+          tone,
+          region,
+          locale,
+          includePaid: hasPremium,
+        });
+
+        if (cancelled) return;
+        setAnalysis(result);
+        if (hasPremium) incrementGenerationsUsed();
+        router.replace('/results');
+      } catch {
+        if (!cancelled) router.replace('/welcome');
       }
     }
 
@@ -68,17 +65,7 @@ export default function GeneratingScreen() {
     return () => {
       cancelled = true;
     };
-  }, [
-    freeGenerationsUsed,
-    goal,
-    incrementGenerationsUsed,
-    locale,
-    messages,
-    region,
-    setFreeGenerationsUsed,
-    setReplies,
-    tone,
-  ]);
+  }, [goal, hasPremium, incrementGenerationsUsed, locale, messages, region, setAnalysis, tone]);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
