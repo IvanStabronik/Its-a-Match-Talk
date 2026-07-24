@@ -110,7 +110,21 @@
       "itemGhost": "Ryzyko zniknięcia + timeline",
       "itemReplies": "Kolejny krok + 3 odpowiedzi",
       "cta": "Odblokuj insighty"
+    },
+    "compare": {
+      "title": "Od ostatniej analizy",
+      "effortDelta": "Twój udział wysiłku zmienił się o {{delta}} pkt",
+      "moreBalanced": "Bilans jest bliższy równemu niż ostatnio.",
+      "lessBalanced": "Bilans jest dalej od równego niż ostatnio.",
+      "ghostChanged": "Pasmo ryzyka zniknięcia się zmieniło.",
+      "interestChanged": "Trend zaangażowania się zmienił.",
+      "disclaimer": "Porównanie tylko po wynikach na tym urządzeniu — bez tekstu czatu."
     }
+  },
+  "upload": {
+    "title": "Prześlij zrzut ekranu",
+    "subtitle": "OCR na urządzeniu wkrótce. Możesz wybrać zdjęcie; jeśli rozpoznawanie nie gotowe — wklej tekst.",
+    "pick": "Wybierz zdjęcie"
   },
   "paywall": {
     "title": "Zobacz pełny obraz",
@@ -128,7 +142,10 @@
     "deleteData": "Usuń wszystkie dane",
     "deleteConfirm": "Tej operacji nie można cofnąć.",
     "privacyPolicy": "Polityka prywatności",
-    "support": "Wsparcie"
+    "support": "Wsparcie",
+    "premiumOn": "Pełne insighty: odblokowane (test)",
+    "premiumOff": "Pełne insighty: zablokowane",
+    "restoreEmpty": "Brak zakupów do przywrócenia."
   },
   "privacy": {
     "title": "Prywatność",
@@ -142,6 +159,7 @@
   "errors": {
     "ocrFailed": "Nie udało się rozpoznać tekstu",
     "ocrFailedAction": "Wklej ręcznie",
+    "ocrPermission": "Potrzebny dostęp do zdjęć",
     "generationFailed": "Nie udało się wygenerować odpowiedzi",
     "usageExceeded": "Limit wyczerpany",
     "network": "Sprawdź połączenie z internetem"

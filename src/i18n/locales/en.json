@@ -110,7 +110,21 @@
       "itemGhost": "Ghost risk + timeline",
       "itemReplies": "Next step + 3 replies",
       "cta": "Unlock insights"
+    },
+    "compare": {
+      "title": "Since last analysis",
+      "effortDelta": "Your effort share changed by {{delta}} pts",
+      "moreBalanced": "Effort looks closer to balanced than last time.",
+      "lessBalanced": "Effort looks less balanced than last time.",
+      "ghostChanged": "Ghost-risk band changed versus last run.",
+      "interestChanged": "Interest trend changed versus last run.",
+      "disclaimer": "Comparison uses scores saved on this device only — not the chat text."
     }
+  },
+  "upload": {
+    "title": "Upload screenshot",
+    "subtitle": "On-device OCR is coming. You can pick a photo now; if recognition isn’t ready, paste the chat.",
+    "pick": "Choose photo"
   },
   "paywall": {
     "title": "See the full picture",
@@ -128,7 +142,10 @@
     "deleteData": "Delete all data",
     "deleteConfirm": "This action cannot be undone.",
     "privacyPolicy": "Privacy policy",
-    "support": "Support"
+    "support": "Support",
+    "premiumOn": "Full insights: unlocked (test)",
+    "premiumOff": "Full insights: locked",
+    "restoreEmpty": "No purchases to restore yet."
   },
   "privacy": {
     "title": "Privacy",
@@ -142,6 +159,7 @@
   "errors": {
     "ocrFailed": "Could not recognize text",
     "ocrFailedAction": "Paste manually",
+    "ocrPermission": "Photo library permission is required",
     "generationFailed": "Could not generate replies",
     "usageExceeded": "Limit reached",
     "network": "Check your internet connection"

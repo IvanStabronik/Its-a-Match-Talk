@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Screen } from '@/components/ui';
 import { useTranslation } from '@/hooks/useTranslation';
 import { runAnalysis } from '@/services/analyzeRemote';
+import { buildCompare, loadPreviousSnapshot, saveSnapshot } from '@/services/compare';
 import { useConversationStore } from '@/stores/conversationStore';
 import { useSettingsStore } from '@/stores/settingsStore';
 
@@ -24,6 +25,7 @@ export default function GeneratingScreen() {
   const tone = useConversationStore((s) => s.tone);
   const region = useConversationStore((s) => s.region);
   const setAnalysis = useConversationStore((s) => s.setAnalysis);
+  const setCompare = useConversationStore((s) => s.setCompare);
   const hasPremium = useSettingsStore((s) => s.hasPremium);
   const incrementGenerationsUsed = useSettingsStore((s) => s.incrementGenerationsUsed);
 
@@ -53,7 +55,20 @@ export default function GeneratingScreen() {
         });
 
         if (cancelled) return;
+
+        const currentSnap = {
+          at: new Date().toISOString(),
+          mePercent: result.effort.mePercent,
+          themPercent: result.effort.themPercent,
+          ghostRisk: result.paid?.ghostRisk,
+          interestTrend: result.paid?.interestTrend,
+        };
+        const previous = await loadPreviousSnapshot();
+        const compare = buildCompare(previous, currentSnap);
+        await saveSnapshot(currentSnap);
+
         setAnalysis(result);
+        setCompare(compare);
         if (hasPremium) incrementGenerationsUsed();
         router.replace('/results');
       } catch {
@@ -65,7 +80,17 @@ export default function GeneratingScreen() {
     return () => {
       cancelled = true;
     };
-  }, [goal, hasPremium, incrementGenerationsUsed, locale, messages, region, setAnalysis, tone]);
+  }, [
+    goal,
+    hasPremium,
+    incrementGenerationsUsed,
+    locale,
+    messages,
+    region,
+    setAnalysis,
+    setCompare,
+    tone,
+  ]);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

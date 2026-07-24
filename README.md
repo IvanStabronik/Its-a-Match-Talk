@@ -38,9 +38,11 @@ Copy `.env.example` → `.env` for Supabase keys. Never commit `.env`.
 
 ## What’s in the repo today
 
-- **Code:** Paste → Review → Customize → mock/Edge generate → 3 replies (Phase 0/1 scaffold)
-- **Next (BACKLOG P0):** Effort Balance metrics + analyzer results + paywall split
+- **P0:** Paste → Review → Analyze → Effort Balance (free) + gated premium insights
+- **P1:** On-device compare, Settings + delete, upload scaffold, purchases stub
+- **Next:** Real OCR engines, RevenueCat, finish Supabase deploy checklist
 
+`docs/seed/` = historical Cue-era notes (OCR/privacy still useful).
 ---
 
 ## Repo

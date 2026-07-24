@@ -12,8 +12,8 @@ Legend: `P0` now → `P1` next → `P2` modules → `P3` polish/store.
 - [x] `requirements.md` — R0–R13
 - [x] `architecture.md` — pipeline + trust boundary
 - [x] `AGENT_TOOLKIT.md` — Odysseus-inspired agent practices
-- [ ] Update `README.md` to point at new docs (not only reply seed)
-- [ ] Mark `docs/seed/*` as historical / Cue-era where they conflict
+- [x] Update `README.md` to point at new docs
+- [x] Mark `docs/seed/*` as historical in README
 
 ---
 
@@ -33,13 +33,12 @@ Legend: `P0` now → `P1` next → `P2` modules → `P3` polish/store.
 
 ## P1 — Depth + retention
 
-- [ ] Interest trend + Ghost Risk + hot/cold in UI
-- [ ] Next step card + 3 replies on paid path
-- [ ] Re-analyze flow + on-device previous score compare
-- [ ] OCR upload path (ML Kit / Vision) — reuse seed `07`
-- [ ] `delete-me` Edge Function + Settings action
-- [ ] Usage/entitlement sync ready for RevenueCat
-
+- [x] Interest trend + Ghost Risk + hot/cold in UI (premium)
+- [x] Next step card + 3 replies on paid path
+- [x] Re-analyze flow + on-device previous score compare
+- [x] OCR scaffold (picker + mock provider → paste fallback); real ML Kit/Vision later
+- [x] `delete-me` Edge Function + Settings action (local wipe always; remote when deployed)
+- [x] Purchases adapter stub (`src/services/purchases.ts`) for RevenueCat
 ---
 
 ## P2 — Flag tracker module

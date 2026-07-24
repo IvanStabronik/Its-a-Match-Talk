@@ -19,6 +19,7 @@ type SettingsState = {
   setFreeGenerationsUsed: (count: number) => void;
   resetGenerationsUsed: () => void;
   setPremium: (value: boolean) => void;
+  resetLocalData: () => void;
 };
 
 const initialLocale = resolveDeviceLocale();
@@ -43,6 +44,12 @@ export const useSettingsStore = create<SettingsState>()(
       setFreeGenerationsUsed: (count) => set({ freeGenerationsUsed: count }),
       resetGenerationsUsed: () => set({ freeGenerationsUsed: 0 }),
       setPremium: (value) => set({ hasPremium: value }),
+      resetLocalData: () =>
+        set({
+          freeGenerationsUsed: 0,
+          hasPremium: false,
+          // keep locale + age/privacy so user isn't stuck on gates after delete
+        }),
     }),
     {
       name: 'imt-settings',

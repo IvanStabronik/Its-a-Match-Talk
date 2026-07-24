@@ -20,8 +20,10 @@ export default function WelcomeScreen() {
         <View style={{ flex: 1 }} />
         <Button title={t('welcome.pasteText')} onPress={() => router.push('/paste')} />
         <View style={{ height: 12 }} />
-        <Button title={`${t('welcome.uploadScreenshot')} (${t('welcome.comingSoon')})`} variant="secondary" disabled />
-        <View style={{ height: 16 }} />
+        <Button title={t('welcome.uploadScreenshot')} variant="secondary" onPress={() => router.push('/upload')} />
+        <View style={{ height: 12 }} />
+        <Button title={t('settings.title')} variant="ghost" onPress={() => router.push('/settings')} />
+        <View style={{ height: 8 }} />
         <Button
           title={t('welcome.freeGenerationsLeft', { count: remaining })}
           variant="ghost"

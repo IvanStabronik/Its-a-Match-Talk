@@ -24,6 +24,15 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-router", "expo-localization"]
+    "plugins": [
+      "expo-router",
+      "expo-localization",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Its a Match Talk to access photos for on-device chat OCR."
+        }
+      ]
+    ]
   }
 }

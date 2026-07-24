@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 
+import type { AnalysisCompare } from '@/services/compare';
 import type {
   AnalysisResult,
   EffortBalance,
@@ -19,6 +20,7 @@ type ConversationState = {
   replies: Reply[];
   effort: EffortBalance | null;
   analysis: AnalysisResult | null;
+  compare: AnalysisCompare | null;
   setRawPaste: (text: string) => void;
   setMessages: (messages: Message[]) => void;
   updateMessage: (id: string, patch: Partial<Message>) => void;
@@ -27,6 +29,7 @@ type ConversationState = {
   setRegion: (region: RegionId) => void;
   setReplies: (replies: Reply[]) => void;
   setAnalysis: (analysis: AnalysisResult) => void;
+  setCompare: (compare: AnalysisCompare | null) => void;
   reset: () => void;
 };
 
@@ -39,6 +42,7 @@ const defaultState = {
   replies: [] as Reply[],
   effort: null as EffortBalance | null,
   analysis: null as AnalysisResult | null,
+  compare: null as AnalysisCompare | null,
 };
 
 export const useConversationStore = create<ConversationState>((set) => ({
@@ -59,5 +63,6 @@ export const useConversationStore = create<ConversationState>((set) => ({
       effort: analysis.effort,
       replies: analysis.paid?.replies ?? [],
     }),
+  setCompare: (compare) => set({ compare }),
   reset: () => set({ ...defaultState }),
 }));

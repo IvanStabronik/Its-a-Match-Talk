@@ -16,6 +16,7 @@ export default function ResultsScreen() {
   const effort = useConversationStore((s) => s.effort);
   const analysis = useConversationStore((s) => s.analysis);
   const replies = useConversationStore((s) => s.replies);
+  const compare = useConversationStore((s) => s.compare);
   const reset = useConversationStore((s) => s.reset);
   const hasPremium = useSettingsStore((s) => s.hasPremium);
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -49,6 +50,33 @@ export default function ResultsScreen() {
                 </Text>
               ))}
               <Text style={styles.disclaimer}>{t('insights.disclaimer')}</Text>
+            </Card>
+          ) : null}
+
+          {compare ? (
+            <Card>
+              <Text style={styles.sectionLabel}>{t('insights.compare.title')}</Text>
+              <Text style={styles.body}>
+                {t('insights.compare.effortDelta', {
+                  delta:
+                    compare.effortDelta > 0
+                      ? `+${compare.effortDelta}`
+                      : String(compare.effortDelta),
+                })}
+              </Text>
+              {compare.effortImproved === true ? (
+                <Text style={styles.bullet}>• {t('insights.compare.moreBalanced')}</Text>
+              ) : null}
+              {compare.effortImproved === false ? (
+                <Text style={styles.bullet}>• {t('insights.compare.lessBalanced')}</Text>
+              ) : null}
+              {compare.ghostChanged ? (
+                <Text style={styles.bullet}>• {t('insights.compare.ghostChanged')}</Text>
+              ) : null}
+              {compare.interestChanged ? (
+                <Text style={styles.bullet}>• {t('insights.compare.interestChanged')}</Text>
+              ) : null}
+              <Text style={styles.disclaimer}>{t('insights.compare.disclaimer')}</Text>
             </Card>
           ) : null}
 
