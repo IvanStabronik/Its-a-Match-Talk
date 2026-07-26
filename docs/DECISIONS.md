@@ -8,7 +8,7 @@
 | 2026-07-16 | **AI provider:** OpenAI EU | User choice; speed + quality for MVP |
 | 2026-07-16 | **Legal entity:** JDG Ivan Stabronik (Poland) | User is based in Poland |
 | 2026-07-16 | **Stack:** Expo SDK 57 + TypeScript + Expo Router + Zustand | Cue patterns, Windows-friendly |
-| 2026-07-16 | **Backend:** New Supabase project (West EU / Ireland) | `judqmuighjmawjgoiuqr` |
+| 2026-07-16 | **Backend:** New Supabase project (West EU / Ireland) | `judqmujghjmawjgoiuqr` (URL typo fixed 2026-07-26) |
 | 2026-07-16 | **Bundle ID:** `com.ivanstabronik.itsamatchtalk` | Placeholder until store setup |
 | 2026-07-16 | **Repo:** https://github.com/IvanStabronik/Its-a-Match-Talk.git | User provided |
 | 2026-07-16 | **Auth v1:** Anonymous only | Device-bound; Google/Apple later |

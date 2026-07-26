@@ -1,8 +1,8 @@
 # Supabase setup — полный чеклист
 
 **Проект:** Its-a-Match-Talk  
-**URL:** `https://judqmuighjmawjgoiuqr.supabase.co`  
-**Project ref:** `judqmuighjmawjgoiuqr`  
+**URL:** `https://judqmujghjmawjgoiuqr.supabase.co`  
+**Project ref:** `judqmujghjmawjgoiuqr`  
 **Регион:** West EU (Ireland)
 
 Пока шаги ниже не сделаны, приложение работает на **локальном mock** (Effort Balance / insights без сервера).
@@ -22,7 +22,7 @@
 Локальный `.env` (уже есть, **не в git**):
 
 ```
-EXPO_PUBLIC_SUPABASE_URL=https://judqmuighjmawjgoiuqr.supabase.co
+EXPO_PUBLIC_SUPABASE_URL=https://judqmujghjmawjgoiuqr.supabase.co
 EXPO_PUBLIC_SUPABASE_ANON_KEY=<publishable / anon>
 SUPABASE_SERVICE_ROLE_KEY=<secret / service_role>   # только для CLI/secrets, не в Expo
 OPENAI_API_KEY=sk-...
@@ -83,7 +83,7 @@ npx supabase login
 Откроется браузер → Authorize.
 
 ```powershell
-npx supabase link --project-ref judqmuighjmawjgoiuqr
+npx supabase link --project-ref judqmujghjmawjgoiuqr
 ```
 
 Если спросит database password — это пароль БД, заданный при создании проекта  
@@ -95,7 +95,7 @@ npx supabase link --project-ref judqmuighjmawjgoiuqr
 npx supabase projects list
 ```
 
-Проект `judqmuighjmawjgoiuqr` должен быть linked.
+Проект `judqmujghjmawjgoiuqr` должен быть linked.
 
 ---
 
@@ -212,7 +212,7 @@ Settings → Delete all data → user исчезает из Auth (если `dele
 1. ☐ Anonymous Enable  
 2. ☐ SQL Editor → весь `20260716120000_initial.sql` → Run  
 3. ☐ `npx supabase login`  
-4. ☐ `npx supabase link --project-ref judqmuighjmawjgoiuqr`  
+4. ☐ `npx supabase link --project-ref judqmujghjmawjgoiuqr`  
 5. ☐ `npx supabase secrets set OPENAI_API_KEY="..." MOCK_AI_PROVIDER=false`  
 6. ☐ `npx supabase functions deploy generate`  
 7. ☐ `npx supabase functions deploy delete-me`  
